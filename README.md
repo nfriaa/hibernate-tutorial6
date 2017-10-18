@@ -14,6 +14,9 @@ A sample code to learn how to map **"Many To Many"** relationship between two en
 ## 1. Database
 Create only database, don't create tables (tables will be created by Hibernate)
 * database name : **persist_db**
+```sql
+CREATE DATABASE `persist_db` /*!40100 DEFAULT CHARACTER SET utf8 */
+```
 
 ## 2. Maven "pom.xml" dependencies
 ```xml
