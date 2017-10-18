@@ -17,7 +17,7 @@ public class Application {
     private static SessionFactory factory;
 
     public static void main(String[] args) {
-        System.out.println("JavaSE + Maven + Hibernate + MySQL : Many to One Association");
+        System.out.println("JavaSE + Maven + Hibernate + MySQL : Many to Many Association");
 
         // Open connection  pool
         factory = HibernateUtil.getSessionFactory();
@@ -28,36 +28,36 @@ public class Application {
         try {
             transaction = session.beginTransaction();
 
+            // new category
+            Category category_a = new Category();
+            category_a.setName("Cat a");
+            session.save(category_a);
+
+            // new category
+            Category category_b = new Category();
+            category_b.setName("Cat b");
+            session.save(category_b);
+
             // new product
             Product product_x = new Product();
             product_x.setName("Prod x");
             product_x.setPrice(456);
+            product_x.getCategories().add(category_b);
             session.save(product_x);
 
             // new product
             Product product_y = new Product();
             product_y.setName("Prod y");
             product_y.setPrice(123);
+            product_y.getCategories().add(category_a);
             session.save(product_y);
 
             // new product
             Product product_z = new Product();
             product_z.setName("Prod z");
             product_z.setPrice(789);
+            product_z.getCategories().add(category_a);
             session.save(product_z);
-
-            // new category
-            Category category_a = new Category();
-            category_a.setName("Cat a");
-            category_a.getProducts().add(product_x);
-            category_a.getProducts().add(product_y);
-            session.save(category_a);
-
-            // new category
-            Category category_b = new Category();
-            category_b.setName("Cat b");
-            category_b.getProducts().add(product_z);
-            session.save(category_b);
 
             transaction.commit();
         } catch (Exception e) {
