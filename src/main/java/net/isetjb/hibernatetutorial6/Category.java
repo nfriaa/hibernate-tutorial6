@@ -28,16 +28,18 @@ public class Category {
     @Column(name = "name", length = 255, nullable = true)
     private String name;
 
-    // Bidirectionnel "Many To Many" :
-//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "categories")
-//    private List<Product> products = new ArrayList<>();
-//public List<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(List<Product> products) {
-//        this.products = products;
-//    }
+    // Bidirectionnel mode :
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "categories")
+    private List<Product> products = new ArrayList<>();
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public int getId() {
         return id;
     }

@@ -59,6 +59,18 @@ public class Application {
             product_z.getCategories().add(category_a);
             session.save(product_z);
 
+            // new product
+            Product product_w = new Product();
+            product_w.setName("Prod w");
+            product_w.setPrice(258);
+            session.save(product_w);
+
+            // new category
+            Category category_c = new Category();
+            category_c.setName("Cat c");
+            category_c.getProducts().add(product_w);
+            session.save(category_c);
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
