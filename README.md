@@ -16,7 +16,7 @@ Create only database, don't create tables (tables will be created by Hibernate)
 * database name : **persist_db**
 
 ## 2. Maven "pom.xml" dependencies
-```
+```xml
 <dependencies>
     <!-- MySQL connector -->
     <dependency>
@@ -34,7 +34,7 @@ Create only database, don't create tables (tables will be created by Hibernate)
 ```
 
 ## 3. Hibernate configuration file "hibernate.cfg.xml"
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
@@ -103,7 +103,7 @@ public class Product {
 ```
 
 `Source entity : Category.java`
-```
+```java
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -115,11 +115,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-/**
- * Category class.
- *
- * @author Nafaa Friaa (nafaa.friaa@isetjb.rnu.tn)
- */
 @Entity
 @Table(name = "category")
 public class Category {
