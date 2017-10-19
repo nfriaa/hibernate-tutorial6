@@ -34,11 +34,11 @@ public class Product {
     @Column(name = "price", nullable = true)
     private int price;
 
-    // Bidirectional mode:
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-
     // Unidirectional mode:
     //@ManyToMany(cascade = CascadeType.ALL)
+    //
+    // Bidirectional mode:
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "product_category",
             joinColumns = {
                 @JoinColumn(name = "product_id")},
